@@ -1,0 +1,1 @@
+"./i2c_lib.obj" "./main.obj" "./utils.obj" "../lnk_msp430g2332.cmd" -llibc.a 

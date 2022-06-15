@@ -1,0 +1,571 @@
+******************************************************************************
+                  MSP430 Linker PC v21.6.0                     
+******************************************************************************
+>> Linked Fri Jun 10 15:32:56 2022
+
+OUTPUT FILE NAME:   <msp430g2xx2_usi_15.c.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000f52a
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  SFR                   00000000   00000010  00000000  00000010  RWIX
+  PERIPHERALS_8BIT      00000010   000000f0  00000000  000000f0  RWIX
+  PERIPHERALS_16BIT     00000100   00000100  00000000  00000100  RWIX
+  RAM                   00000200   00000100  0000006d  00000093  RWIX
+  INFOD                 00001000   00000040  00000000  00000040  RWIX
+  INFOC                 00001040   00000040  00000000  00000040  RWIX
+  INFOB                 00001080   00000040  00000000  00000040  RWIX
+  INFOA                 000010c0   00000040  00000000  00000040  RWIX
+  FLASH                 0000f000   00000fe0  00000676  0000096a  RWIX
+  INT00                 0000ffe0   00000002  00000000  00000002  RWIX
+  INT01                 0000ffe2   00000002  00000000  00000002  RWIX
+  INT02                 0000ffe4   00000002  00000002  00000000  RWIX
+  INT03                 0000ffe6   00000002  00000002  00000000  RWIX
+  INT04                 0000ffe8   00000002  00000002  00000000  RWIX
+  INT05                 0000ffea   00000002  00000002  00000000  RWIX
+  INT06                 0000ffec   00000002  00000000  00000002  RWIX
+  INT07                 0000ffee   00000002  00000000  00000002  RWIX
+  INT08                 0000fff0   00000002  00000002  00000000  RWIX
+  INT09                 0000fff2   00000002  00000002  00000000  RWIX
+  INT10                 0000fff4   00000002  00000002  00000000  RWIX
+  INT11                 0000fff6   00000002  00000000  00000002  RWIX
+  INT12                 0000fff8   00000002  00000000  00000002  RWIX
+  INT13                 0000fffa   00000002  00000000  00000002  RWIX
+  INT14                 0000fffc   00000002  00000002  00000000  RWIX
+  RESET                 0000fffe   00000002  00000002  00000000  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.data      0    00000200    0000001a     UNINITIALIZED
+                  00000200    0000000a     i2c_lib.obj (.data)
+                  0000020a    00000008     i2c_lib.obj (.data:ui8pIncoming_Buffer)
+                  00000212    00000008     i2c_lib.obj (.data:ui8pOutgoing_Buffer)
+
+.bss       0    0000021a    00000003     UNINITIALIZED
+                  0000021a    00000002     (.common:Bytecount)
+                  0000021c    00000001     (.common:REG_ADDRESS)
+
+.stack     0    000002b0    00000050     UNINITIALIZED
+                  000002b0    00000002     rts430_eabi.lib : boot.c.obj (.stack)
+                  000002b2    0000004e     --HOLE--
+
+.text      0    0000f000    0000065a     
+                  0000f000    000001b4     i2c_lib.obj (.text:USI_TXRX)
+                  0000f1b4    000000b6     msp430g2xx2_usi_15.obj (.text:main)
+                  0000f26a    00000092     i2c_lib.obj (.text:I2C_Slave_ProcessCMD)
+                  0000f2fc    0000007c     rts430_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  0000f378    0000004c                     : lsr16.asm.obj (.text)
+                  0000f3c4    00000042                     : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  0000f406    0000003e                     : lsl32.asm.obj (.text:l_lsl_const)
+                  0000f444    0000003a     i2c_lib.obj (.text:ReadyToTransmitData)
+                  0000f47e    00000038     i2c_lib.obj (.text:Setup_USI_Slave)
+                  0000f4b6    0000002c     rts430_eabi.lib : lsl16.asm.obj (.text)
+                  0000f4e2    00000028     i2c_lib.obj (.text:TX_Data)
+                  0000f50a    00000020     utils.obj (.text:ConvertUi8pToUi32)
+                  0000f52a    0000001c     rts430_eabi.lib : boot.c.obj (.text:_c_int00_noargs)
+                  0000f546    0000001a     utils.obj (.text:CopyUi32ToArray)
+                  0000f560    00000018     i2c_lib.obj (.text:set_i2c_resp_int)
+                  0000f578    00000018     i2c_lib.obj (.text:set_i2c_resp_ui32)
+                  0000f590    00000014     rts430_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000f5a4    00000014                     : memset.c.obj (.text:memset)
+                  0000f5b8    00000012                     : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000f5ca    00000012                     : memcpy.c.obj (.text:memcpy)
+                  0000f5dc    00000010     utils.obj (.text:CopyInt16Array)
+                  0000f5ec    00000010     i2c_lib.obj (.text:Reg_RX)
+                  0000f5fc    00000010     rts430_eabi.lib : epilog.asm.obj (.text)
+                  0000f60c    0000000e     i2c_lib.obj (.text:Data_RX)
+                  0000f61a    0000000a     msp430g2xx2_usi_15.obj (.text:get_sleep_time_ref)
+                  0000f624    0000000a     i2c_lib.obj (.text:get_timer_value)
+                  0000f62e    00000008     rts430_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+                  0000f636    00000006                     : exit.c.obj (.text:abort)
+                  0000f63c    00000006     i2c_lib.obj (.text:finished_acting_on_received)
+                  0000f642    00000006     i2c_lib.obj (.text:get_i2c_cmd)
+                  0000f648    00000006     i2c_lib.obj (.text:get_i2c_read_cmd)
+                  0000f64e    00000006     i2c_lib.obj (.text:sleep_instruction)
+                  0000f654    00000004     rts430_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000f658    00000002                     : startup.c.obj (.text:_system_post_cinit)
+
+.cinit     0    0000f65a    0000001c     
+                  0000f65a    00000009     (.cinit..data.load) [load image, compression = lzss]
+                  0000f663    00000001     --HOLE-- [fill = 0]
+                  0000f664    00000006     (__TI_handler_table)
+                  0000f66a    00000004     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000f66e    00000008     (__TI_cinit_table)
+
+.binit     0    0000f000    00000000     
+
+.init_array 
+*          0    0000f000    00000000     UNINITIALIZED
+
+PORT1      0    0000ffe4    00000002     
+                  0000ffe4    00000002     rts430_eabi.lib : int02.asm.obj (.int02)
+
+PORT2      0    0000ffe6    00000002     
+                  0000ffe6    00000002     rts430_eabi.lib : int03.asm.obj (.int03)
+
+USI        0    0000ffe8    00000002     
+                  0000ffe8    00000002     i2c_lib.obj (.int04)
+
+ADC10      0    0000ffea    00000002     
+                  0000ffea    00000002     rts430_eabi.lib : int05.asm.obj (.int05)
+
+TIMER0_A1 
+*          0    0000fff0    00000002     
+                  0000fff0    00000002     rts430_eabi.lib : int08.asm.obj (.int08)
+
+TIMER0_A0 
+*          0    0000fff2    00000002     
+                  0000fff2    00000002     rts430_eabi.lib : int09.asm.obj (.int09)
+
+WDT        0    0000fff4    00000002     
+                  0000fff4    00000002     rts430_eabi.lib : int10.asm.obj (.int10)
+
+NMI        0    0000fffc    00000002     
+                  0000fffc    00000002     rts430_eabi.lib : int14.asm.obj (.int14)
+
+.reset     0    0000fffe    00000002     
+                  0000fffe    00000002     rts430_eabi.lib : boot.c.obj (.reset)
+
+MODULE SUMMARY
+
+       Module                       code   ro data   rw data
+       ------                       ----   -------   -------
+    .\
+       i2c_lib.obj                  848    2         29     
+       msp430g2xx2_usi_15.obj       192    0         0      
+       utils.obj                    74     0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       1114   2         29     
+                                                            
+    C:\ti\ccs1120\ccs\tools\compiler\ti-cgt-msp430_21.6.0.LTS\lib\rts430_eabi.lib
+       copy_decompress_lzss.c.obj   124    0         0      
+       lsr16.asm.obj                76     0         0      
+       autoinit.c.obj               66     0         0      
+       lsl32.asm.obj                62     0         0      
+       lsl16.asm.obj                44     0         0      
+       boot.c.obj                   28     2         0      
+       copy_zero_init.c.obj         20     0         0      
+       memset.c.obj                 20     0         0      
+       copy_decompress_none.c.obj   18     0         0      
+       memcpy.c.obj                 18     0         0      
+       epilog.asm.obj               16     0         0      
+       isr_trap.asm.obj             8      0         0      
+       exit.c.obj                   6      0         0      
+       pre_init.c.obj               4      0         0      
+       int02.asm.obj                0      2         0      
+       int03.asm.obj                0      2         0      
+       int05.asm.obj                0      2         0      
+       int08.asm.obj                0      2         0      
+       int09.asm.obj                0      2         0      
+       int10.asm.obj                0      2         0      
+       int14.asm.obj                0      2         0      
+       startup.c.obj                2      0         0      
+    +--+----------------------------+------+---------+---------+
+       Total:                       512    16        0      
+                                                            
+       Stack:                       0      0         80     
+       Linker Generated:            0      27        0      
+    +--+----------------------------+------+---------+---------+
+       Grand Total:                 1626   45        109    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 0000f66e records: 2, size/record: 4, table size: 8
+	.data: load addr=0000f65a, load size=00000009 bytes, run addr=00000200, run size=0000001a bytes, compression=lzss
+	.bss: load addr=0000f66a, load size=00000004 bytes, run addr=0000021a, run size=00000003 bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 0000f664 records: 3, size/record: 2, table size: 6
+	index: 0, handler: __TI_zero_init
+	index: 1, handler: __TI_decompress_lzss
+	index: 2, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+0000004a  ADC10AE0                      
+000001b0  ADC10CTL0                     
+000001b2  ADC10CTL1                     
+00000048  ADC10DTC0                     
+00000049  ADC10DTC1                     
+000001b4  ADC10MEM                      
+000001bc  ADC10SA                       
+00000057  BCSCTL1                       
+00000058  BCSCTL2                       
+00000053  BCSCTL3                       
+0000021a  Bytecount                     
+0000f636  C$$EXIT                       
+000010fb  CALBC1_12MHZ                  
+000010f9  CALBC1_16MHZ                  
+000010ff  CALBC1_1MHZ                   
+000010fd  CALBC1_8MHZ                   
+000010fa  CALDCO_12MHZ                  
+000010f8  CALDCO_16MHZ                  
+000010fe  CALDCO_1MHZ                   
+000010fc  CALDCO_8MHZ                   
+0000f50a  ConvertUi8pToUi32             
+0000f5dc  CopyInt16Array                
+0000f546  CopyUi32ToArray               
+00000056  DCOCTL                        
+0000f60c  Data_RX                       
+00000128  FCTL1                         
+0000012a  FCTL2                         
+0000012c  FCTL3                         
+0000f26a  I2C_Slave_ProcessCMD          
+00000208  I2C_State                     
+00000000  IE1                           
+00000002  IFG1                          
+00000204  Number_of_Bytes               
+00000022  P1DIR                         
+00000025  P1IE                          
+00000024  P1IES                         
+00000023  P1IFG                         
+00000020  P1IN                          
+00000021  P1OUT                         
+00000027  P1REN                         
+00000026  P1SEL                         
+00000041  P1SEL2                        
+0000002a  P2DIR                         
+0000002d  P2IE                          
+0000002c  P2IES                         
+0000002b  P2IFG                         
+00000028  P2IN                          
+00000029  P2OUT                         
+0000002f  P2REN                         
+0000002e  P2SEL                         
+00000042  P2SEL2                        
+0000021c  REG_ADDRESS                   
+0000f444  ReadyToTransmitData           
+0000f5ec  Reg_RX                        
+00000200  SLV_Addr                      
+0000f47e  Setup_USI_Slave               
+00000172  TA0CCR0                       
+00000174  TA0CCR1                       
+00000176  TA0CCR2                       
+00000162  TA0CCTL0                      
+00000164  TA0CCTL1                      
+00000166  TA0CCTL2                      
+00000160  TA0CTL                        
+0000012e  TA0IV                         
+00000170  TA0R                          
+000010db  TLV_ADC10_1_LEN               
+000010da  TLV_ADC10_1_TAG               
+000010c0  TLV_CHECKSUM                  
+000010f7  TLV_DCO_30_LEN                
+000010f6  TLV_DCO_30_TAG                
+0000f4e2  TX_Data                       
+0000007a  USICCTL                       
+0000007a  USICKCTL                      
+0000007b  USICNT                        
+00000078  USICTL                        
+00000078  USICTL0                       
+00000079  USICTL1                       
+0000007c  USISR                         
+0000007d  USISRH                        
+0000007c  USISRL                        
+0000f000  USI_TXRX                      
+00000120  WDTCTL                        
+00000300  __STACK_END                   
+00000050  __STACK_SIZE                  
+0000f66e  __TI_CINIT_Base               
+0000f676  __TI_CINIT_Limit              
+0000f676  __TI_CINIT_Warm               
+0000f664  __TI_Handler_Table_Base       
+0000f66a  __TI_Handler_Table_Limit      
+0000f62e  __TI_ISR_TRAP                 
+0000f3c4  __TI_auto_init_nobinit_nopinit
+0000f2fc  __TI_decompress_lzss          
+0000f5b8  __TI_decompress_none          
+0000ffe4  __TI_int02                    
+0000ffe6  __TI_int03                    
+0000ffe8  __TI_int04                    
+0000ffea  __TI_int05                    
+0000fff0  __TI_int08                    
+0000fff2  __TI_int09                    
+0000fff4  __TI_int10                    
+0000fffc  __TI_int14                    
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+0000f590  __TI_zero_init_nomemset       
+ffffffff  __c_args__                    
+0000f608  __mspabi_func_epilog_1        
+0000f606  __mspabi_func_epilog_2        
+0000f604  __mspabi_func_epilog_3        
+0000f602  __mspabi_func_epilog_4        
+0000f600  __mspabi_func_epilog_5        
+0000f5fe  __mspabi_func_epilog_6        
+0000f5fc  __mspabi_func_epilog_7        
+0000f4b6  __mspabi_slli                 
+0000f4de  __mspabi_slli_1               
+0000f4cc  __mspabi_slli_10              
+0000f4ca  __mspabi_slli_11              
+0000f4c8  __mspabi_slli_12              
+0000f4c6  __mspabi_slli_13              
+0000f4c4  __mspabi_slli_14              
+0000f4c2  __mspabi_slli_15              
+0000f4dc  __mspabi_slli_2               
+0000f4da  __mspabi_slli_3               
+0000f4d8  __mspabi_slli_4               
+0000f4d6  __mspabi_slli_5               
+0000f4d4  __mspabi_slli_6               
+0000f4d2  __mspabi_slli_7               
+0000f4d0  __mspabi_slli_8               
+0000f4ce  __mspabi_slli_9               
+0000f43e  __mspabi_slll_1               
+0000f41a  __mspabi_slll_10              
+0000f416  __mspabi_slll_11              
+0000f412  __mspabi_slll_12              
+0000f40e  __mspabi_slll_13              
+0000f40a  __mspabi_slll_14              
+0000f406  __mspabi_slll_15              
+0000f43a  __mspabi_slll_2               
+0000f436  __mspabi_slll_3               
+0000f432  __mspabi_slll_4               
+0000f42e  __mspabi_slll_5               
+0000f42a  __mspabi_slll_6               
+0000f426  __mspabi_slll_7               
+0000f422  __mspabi_slll_8               
+0000f41e  __mspabi_slll_9               
+0000f378  __mspabi_srli                 
+0000f3be  __mspabi_srli_1               
+0000f39a  __mspabi_srli_10              
+0000f396  __mspabi_srli_11              
+0000f392  __mspabi_srli_12              
+0000f38e  __mspabi_srli_13              
+0000f38a  __mspabi_srli_14              
+0000f386  __mspabi_srli_15              
+0000f3ba  __mspabi_srli_2               
+0000f3b6  __mspabi_srli_3               
+0000f3b2  __mspabi_srli_4               
+0000f3ae  __mspabi_srli_5               
+0000f3aa  __mspabi_srli_6               
+0000f3a6  __mspabi_srli_7               
+0000f3a2  __mspabi_srli_8               
+0000f39e  __mspabi_srli_9               
+0000f52a  _c_int00_noargs               
+0000fffe  _reset_vector                 
+000002b0  _stack                        
+0000f658  _system_post_cinit            
+0000f654  _system_pre_init              
+0000f636  abort                         
+0000f63c  finished_acting_on_received   
+0000f642  get_i2c_cmd                   
+0000f648  get_i2c_read_cmd              
+0000f61a  get_sleep_time_ref            
+0000f624  get_timer_value               
+00000206  i2c_read_cmd                  
+00000207  i2c_write_cmd                 
+0000f1b4  main                          
+0000f5ca  memcpy                        
+0000f5a4  memset                        
+0000f560  set_i2c_resp_int              
+0000f578  set_i2c_resp_ui32             
+0000f64e  sleep_instruction             
+00000202  transmit                      
+00000205  transmit_index                
+0000020a  ui8pIncoming_Buffer           
+00000212  ui8pOutgoing_Buffer           
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  IE1                           
+00000002  IFG1                          
+00000020  P1IN                          
+00000021  P1OUT                         
+00000022  P1DIR                         
+00000023  P1IFG                         
+00000024  P1IES                         
+00000025  P1IE                          
+00000026  P1SEL                         
+00000027  P1REN                         
+00000028  P2IN                          
+00000029  P2OUT                         
+0000002a  P2DIR                         
+0000002b  P2IFG                         
+0000002c  P2IES                         
+0000002d  P2IE                          
+0000002e  P2SEL                         
+0000002f  P2REN                         
+00000041  P1SEL2                        
+00000042  P2SEL2                        
+00000048  ADC10DTC0                     
+00000049  ADC10DTC1                     
+0000004a  ADC10AE0                      
+00000050  __STACK_SIZE                  
+00000053  BCSCTL3                       
+00000056  DCOCTL                        
+00000057  BCSCTL1                       
+00000058  BCSCTL2                       
+00000078  USICTL                        
+00000078  USICTL0                       
+00000079  USICTL1                       
+0000007a  USICCTL                       
+0000007a  USICKCTL                      
+0000007b  USICNT                        
+0000007c  USISR                         
+0000007c  USISRL                        
+0000007d  USISRH                        
+00000120  WDTCTL                        
+00000128  FCTL1                         
+0000012a  FCTL2                         
+0000012c  FCTL3                         
+0000012e  TA0IV                         
+00000160  TA0CTL                        
+00000162  TA0CCTL0                      
+00000164  TA0CCTL1                      
+00000166  TA0CCTL2                      
+00000170  TA0R                          
+00000172  TA0CCR0                       
+00000174  TA0CCR1                       
+00000176  TA0CCR2                       
+000001b0  ADC10CTL0                     
+000001b2  ADC10CTL1                     
+000001b4  ADC10MEM                      
+000001bc  ADC10SA                       
+00000200  SLV_Addr                      
+00000202  transmit                      
+00000204  Number_of_Bytes               
+00000205  transmit_index                
+00000206  i2c_read_cmd                  
+00000207  i2c_write_cmd                 
+00000208  I2C_State                     
+0000020a  ui8pIncoming_Buffer           
+00000212  ui8pOutgoing_Buffer           
+0000021a  Bytecount                     
+0000021c  REG_ADDRESS                   
+000002b0  _stack                        
+00000300  __STACK_END                   
+000010c0  TLV_CHECKSUM                  
+000010da  TLV_ADC10_1_TAG               
+000010db  TLV_ADC10_1_LEN               
+000010f6  TLV_DCO_30_TAG                
+000010f7  TLV_DCO_30_LEN                
+000010f8  CALDCO_16MHZ                  
+000010f9  CALBC1_16MHZ                  
+000010fa  CALDCO_12MHZ                  
+000010fb  CALBC1_12MHZ                  
+000010fc  CALDCO_8MHZ                   
+000010fd  CALBC1_8MHZ                   
+000010fe  CALDCO_1MHZ                   
+000010ff  CALBC1_1MHZ                   
+0000f000  USI_TXRX                      
+0000f1b4  main                          
+0000f26a  I2C_Slave_ProcessCMD          
+0000f2fc  __TI_decompress_lzss          
+0000f378  __mspabi_srli                 
+0000f386  __mspabi_srli_15              
+0000f38a  __mspabi_srli_14              
+0000f38e  __mspabi_srli_13              
+0000f392  __mspabi_srli_12              
+0000f396  __mspabi_srli_11              
+0000f39a  __mspabi_srli_10              
+0000f39e  __mspabi_srli_9               
+0000f3a2  __mspabi_srli_8               
+0000f3a6  __mspabi_srli_7               
+0000f3aa  __mspabi_srli_6               
+0000f3ae  __mspabi_srli_5               
+0000f3b2  __mspabi_srli_4               
+0000f3b6  __mspabi_srli_3               
+0000f3ba  __mspabi_srli_2               
+0000f3be  __mspabi_srli_1               
+0000f3c4  __TI_auto_init_nobinit_nopinit
+0000f406  __mspabi_slll_15              
+0000f40a  __mspabi_slll_14              
+0000f40e  __mspabi_slll_13              
+0000f412  __mspabi_slll_12              
+0000f416  __mspabi_slll_11              
+0000f41a  __mspabi_slll_10              
+0000f41e  __mspabi_slll_9               
+0000f422  __mspabi_slll_8               
+0000f426  __mspabi_slll_7               
+0000f42a  __mspabi_slll_6               
+0000f42e  __mspabi_slll_5               
+0000f432  __mspabi_slll_4               
+0000f436  __mspabi_slll_3               
+0000f43a  __mspabi_slll_2               
+0000f43e  __mspabi_slll_1               
+0000f444  ReadyToTransmitData           
+0000f47e  Setup_USI_Slave               
+0000f4b6  __mspabi_slli                 
+0000f4c2  __mspabi_slli_15              
+0000f4c4  __mspabi_slli_14              
+0000f4c6  __mspabi_slli_13              
+0000f4c8  __mspabi_slli_12              
+0000f4ca  __mspabi_slli_11              
+0000f4cc  __mspabi_slli_10              
+0000f4ce  __mspabi_slli_9               
+0000f4d0  __mspabi_slli_8               
+0000f4d2  __mspabi_slli_7               
+0000f4d4  __mspabi_slli_6               
+0000f4d6  __mspabi_slli_5               
+0000f4d8  __mspabi_slli_4               
+0000f4da  __mspabi_slli_3               
+0000f4dc  __mspabi_slli_2               
+0000f4de  __mspabi_slli_1               
+0000f4e2  TX_Data                       
+0000f50a  ConvertUi8pToUi32             
+0000f52a  _c_int00_noargs               
+0000f546  CopyUi32ToArray               
+0000f560  set_i2c_resp_int              
+0000f578  set_i2c_resp_ui32             
+0000f590  __TI_zero_init_nomemset       
+0000f5a4  memset                        
+0000f5b8  __TI_decompress_none          
+0000f5ca  memcpy                        
+0000f5dc  CopyInt16Array                
+0000f5ec  Reg_RX                        
+0000f5fc  __mspabi_func_epilog_7        
+0000f5fe  __mspabi_func_epilog_6        
+0000f600  __mspabi_func_epilog_5        
+0000f602  __mspabi_func_epilog_4        
+0000f604  __mspabi_func_epilog_3        
+0000f606  __mspabi_func_epilog_2        
+0000f608  __mspabi_func_epilog_1        
+0000f60c  Data_RX                       
+0000f61a  get_sleep_time_ref            
+0000f624  get_timer_value               
+0000f62e  __TI_ISR_TRAP                 
+0000f636  C$$EXIT                       
+0000f636  abort                         
+0000f63c  finished_acting_on_received   
+0000f642  get_i2c_cmd                   
+0000f648  get_i2c_read_cmd              
+0000f64e  sleep_instruction             
+0000f654  _system_pre_init              
+0000f658  _system_post_cinit            
+0000f664  __TI_Handler_Table_Base       
+0000f66a  __TI_Handler_Table_Limit      
+0000f66e  __TI_CINIT_Base               
+0000f676  __TI_CINIT_Limit              
+0000f676  __TI_CINIT_Warm               
+0000ffe4  __TI_int02                    
+0000ffe6  __TI_int03                    
+0000ffe8  __TI_int04                    
+0000ffea  __TI_int05                    
+0000fff0  __TI_int08                    
+0000fff2  __TI_int09                    
+0000fff4  __TI_int10                    
+0000fffc  __TI_int14                    
+0000fffe  _reset_vector                 
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __c_args__                    
+
+[183 symbols]
