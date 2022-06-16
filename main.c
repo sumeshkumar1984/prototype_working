@@ -76,6 +76,7 @@
 #include <i2c_lib.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include "adc_lib.h"
 
 uint32_t get_sleep_time_ref()
 {
@@ -124,19 +125,19 @@ int main(void)
              switch (i2c_cmd)
              {
              case (CMD_READ_ADC_1):
-                 reading = 1234;
+                 reading = measure_adc1();
                  break;
              case (CMD_READ_ADC_4):
-                 reading = 5678;
+                 reading = measure_adc2();
                  break;
              case (CMD_READ_ADC_5):
-                 reading = 9875;
+                 reading = measure_adc3();
                  break;
              case (CMD_READ_ADC_6):
-                 reading = 5252;
+                 reading = measure_adc4();
                  break;
              case (CMD_TEMP_SENS):
-                 reading = 5151;
+                 reading = measure_temp();
                  break;
              default:
                  __no_operation();

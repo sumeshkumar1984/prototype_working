@@ -31,9 +31,9 @@ uint8_t i2c_read_cmd = 0;
 uint8_t i2c_write_cmd = 0;
 
 void Setup_USI_Slave(void){
-  P1OUT = 0xC0;                             // P1.6 & P1.7 Pullups
+  P1OUT |= 0xC0;                             // P1.6 & P1.7 Pullups
   P1REN |= 0xC0;                            // P1.6 & P1.7 Pullups
-  P1DIR = 0xFF;                             // Unused pins as outputs
+  P1DIR |= 0xC0;                             // Unused pins as outputs
   P2OUT = 0;
   P2DIR = 0xFF;
   USICTL0 = USIPE6+USIPE7+USISWRST;         // Port & USI mode setup
@@ -404,11 +404,6 @@ void ReadyToTransmitData(uint8_t* b_array, uint8_t len)
     len = (len>8?8:len);
     memset(ui8pOutgoing_Buffer,0,8);
     memcpy(ui8pOutgoing_Buffer, b_array, len);
-    int o = 0;
-    for(o = 0; o < 3000; o++)
-    {
-        _delay_cycles(100);
-    }
     //USICTL0 &= ~USIOE;            // SDA = input
     SLV_Addr = SLAVE_ADDR;        // Reset slave address
     //I2C_State = IDLE;             // Reset state machine
