@@ -26,7 +26,7 @@ typedef enum
     CMD_TYPE_2_MASTER
 }i2c_commands;
 
-extern void Setup_USI_Slave(void);
+
 extern void set_i2c_resp_int(int value);
 extern void set_i2c_resp_ui32(uint32_t value);
 extern uint8_t get_i2c_cmd(void);
@@ -34,5 +34,7 @@ extern uint8_t get_i2c_read_cmd(void);
 extern uint32_t get_timer_value(void);
 extern void finished_acting_on_received();
 extern uint8_t sleep_instruction(void);
+extern void initI2C();
+extern void deinit_i2c();
 
 #endif /* I2C_LIB_H_ */

@@ -77,20 +77,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include "adc_lib.h"
+#include "rtc_lib.h"
 
-uint32_t get_sleep_time_ref()
-{
-  return 16632154;
-}
 
-bool SetTimer(uint32_t timer)
-{
-  uint32_t blue = timer+5;
-  if(blue > 0)
-  return true;
-  else
-  return false;
-}
 
 typedef enum {
     INIT            = 0x00,
@@ -111,7 +100,7 @@ int main(void)
   DCOCTL = 0;                               // Select lowest DCOx and MODx settings
   BCSCTL1 = CALBC1_1MHZ;                    // Set DCO
   DCOCTL = CALDCO_1MHZ;
-  Setup_USI_Slave();
+  initI2C();
   RuleType response;
   LPM0;
   while(1)

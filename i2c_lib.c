@@ -34,8 +34,6 @@ void Setup_USI_Slave(void){
   P1OUT |= 0xC0;                             // P1.6 & P1.7 Pullups
   P1REN |= 0xC0;                            // P1.6 & P1.7 Pullups
   P1DIR |= 0xC0;                             // Unused pins as outputs
-  P2OUT = 0;
-  P2DIR = 0xFF;
   USICTL0 = USIPE6+USIPE7+USISWRST;         // Port & USI mode setup
   USICTL1 = USII2C+USIIE+USISTTIE;          // Enable I2C mode & USI interrupts
   USICKCTL = USICKPL;                       // Setup clock polarity
@@ -76,18 +74,11 @@ uint8_t get_i2c_read_cmd(void)
   return i2c_write_cmd;
 }
 
-
-void clear_and_start_i2c_engine()
-{
-
-
-}
-
 uint32_t get_timer_value(void)
 {
     uint32_t value = ConvertUi8pToUi32(ui8pIncoming_Buffer);
     memset(ui8pIncoming_Buffer, 0x00, 8);
-    clear_and_start_i2c_engine();
+    //clear_and_start_i2c_engine();
     return value;
 }
 
@@ -95,16 +86,12 @@ uint8_t sleep_instruction(void)
 {
     uint8_t value = ui8pIncoming_Buffer[0];
     memset(ui8pIncoming_Buffer, 0x00, 8);
-    clear_and_start_i2c_engine();
-    return ;
+    //clear_and_start_i2c_engine();
+    return value;
 }
 
 bool I2C_Slave_ProcessCMD(i2c_commands cmd)
 {
-//    ReceiveIndex = 0;
-//    TransmitIndex = 0;
-//    RXByteCtr = 0;
-//    TXByteCtr = 0;
     bool resp =  true;
     switch (cmd)
     {
@@ -298,9 +285,6 @@ void __attribute__ ((interrupt(USI_VECTOR))) USI_TXRX (void)
                   USISRL = 0x00;              // Send ACK
                   I2C_State = DONE_WRITING;
                   USICNT |= 0x01;
-//                  USICTL0 &= ~USIOE;            // SDA = input
-//                  SLV_Addr = SLAVE_ADDR;        // Reset slave address
-//                  I2C_State = IDLE;             // Reset state machine
               }
               break;
 
@@ -336,7 +320,6 @@ void __attribute__ ((interrupt(USI_VECTOR))) USI_TXRX (void)
                 SLV_Addr = SLAVE_ADDR;        // Reset slave address
                 I2C_State = IDLE;             // Reset state machine
                 Bytecount = 0;                 // Reset counter for next TX/RX
-                //Number_of_Bytes = 0;
                 transmit_index = 0;
                 break;
 
@@ -349,7 +332,6 @@ void __attribute__ ((interrupt(USI_VECTOR))) USI_TXRX (void)
                 Bytecount = 0;
                 transmit_index = 0;
                 Number_of_Bytes = 0;
-             // LPM0_EXIT;                  // Exit active for next transfer
               }
               else                          // Ack received
               {
@@ -372,8 +354,6 @@ void Reg_RX(void)
 {
 
     USICTL0 &= ~USIOE;            // SDA = input
-    //USICNT |= 0x08;              // Bit counter = 8, RX data
-    //USICNT &= ~(USISCLREL);
     USICNT |= 0x08;              // Bit counter = 8, RX data
     I2C_State = CHECK_REG_ADDRESS;           // next state: Test data and (N)Ack
 }
@@ -404,28 +384,14 @@ void ReadyToTransmitData(uint8_t* b_array, uint8_t len)
     len = (len>8?8:len);
     memset(ui8pOutgoing_Buffer,0,8);
     memcpy(ui8pOutgoing_Buffer, b_array, len);
-    //USICTL0 &= ~USIOE;            // SDA = input
     SLV_Addr = SLAVE_ADDR;        // Reset slave address
-    //I2C_State = IDLE;             // Reset state machine
     Bytecount = 0;                 // Reset counter for next TX/RX
     USICTL1 |= USIIE;          // Enable I2C mode & USI interrupts
-   // USICTL0 |= USIOE;              // SDA = output
-   // USISRL = 0x00;                // Send Ack
     USICTL0 &= ~USIOE;            // SDA = input
-    //SLV_Addr = SLAVE_ADDR;        // Reset slave address
     I2C_State = IDLE;             // Reset state machine
-   // Bytecount = 0;                 // Reset counter for next TX/RX
     transmit_index = 0;
-    //USISRL = 0x00;
     USICNT |= (0xA0);       // send Ack
     USICTL1 &= ~USIIFG;            // Clear pending flags
-
-//    USISRL = 0x00;
-    //I2C_State = IDLE;
- //  TX_Data();
- //   USICTL0 &= ~USIOE;            // SDA = input
-//    USICTL0 |= USIOE;             // SDA = output
-////    USICNT = (USICNT & 0xA0);
 }
 
 void set_i2c_resp_int(int value)
@@ -449,4 +415,15 @@ void set_i2c_resp_ui32(uint32_t value)
 void finished_acting_on_received()
 {
     i2c_write_cmd = 0;
+}
+
+extern void initI2C()
+{
+    Setup_USI_Slave();
+}
+
+extern void deinit_i2c()
+{
+    USICTL0 = 0;         // Port & USI mode setup disbaled
+    USICTL1 = 0;          // I2C mode & USI interrupts disabled
 }
