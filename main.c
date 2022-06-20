@@ -169,7 +169,7 @@ int main(void)
 
          finished_acting_on_received();
      }
-     LPM0;
+     __bis_SR_register(LPM0_bits | GIE);
 
   }    // CPU off, await USI interrupt
   

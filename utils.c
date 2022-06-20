@@ -45,7 +45,7 @@ uint32_t ConvertUi8pToUi32(uint8_t *source)
 
 void delay_ms()
 {
-    __delay_cycles(16000);
+    __delay_cycles(1000);
 }
 
 void delay_s()
