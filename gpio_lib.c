@@ -51,7 +51,9 @@ void initWakeupPin()
 
 void Set_i2c_Pins()
 {
-
+    P1OUT |= 0xC0;                             // P1.6 & P1.7 Pullups
+    P1REN |= 0xC0;                            // P1.6 & P1.7 Pullups
+    P1DIR |= 0xC0;
 }
 
 void initGPIO()

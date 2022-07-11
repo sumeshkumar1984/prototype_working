@@ -66,7 +66,7 @@ unsigned int measure_adc3()
 
 unsigned int measure_adc4()
 {
-    return 0;
+    return 1212;
 }
 
 //******************************************************************************

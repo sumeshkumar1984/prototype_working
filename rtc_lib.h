@@ -12,11 +12,11 @@
 #include <stdbool.h>
 
 
-//extern void StopTimer(void);
+extern void StopTimer(void);
 
 extern bool Check_if_timer_up(void);
 
-//extern void StartTimer(uint32_t Set_timer_in_sec);
+extern void StartTimer(uint32_t Set_timer_in_sec);
 
 extern bool SetTimer(uint32_t value);
 

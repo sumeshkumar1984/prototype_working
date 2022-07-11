@@ -78,6 +78,7 @@
 #include <stdint.h>
 #include "adc_lib.h"
 #include "rtc_lib.h"
+#include "gpio_lib.h"
 
 
 
@@ -90,18 +91,54 @@ typedef enum {
 
 } RuleType;
 
+
+void initClockTo1MHz()
+{
+    // Configure one FRAM waitstate as required by the device datasheet for MCLK
+    // operation beyond 8MHz _before_ configuring the clock system.
+    if (CALBC1_1MHZ==0xFF)                    // If calibration constant erased
+    {
+      while(1);                               // do not load, trap CPU!!
+    }
+    DCOCTL = 0;                               // Select lowest DCOx and MODx settings
+    BCSCTL1 = CALBC1_1MHZ;                    // Set DCO
+    DCOCTL = CALDCO_1MHZ;
+}
+
 int main(void)
 {
   WDTCTL = WDTPW + WDTHOLD;                 // Stop watchdog
-  if (CALBC1_1MHZ==0xFF)					// If calibration constant erased
-  {											
-    while(1);                               // do not load, trap CPU!!	
-  }
-  DCOCTL = 0;                               // Select lowest DCOx and MODx settings
-  BCSCTL1 = CALBC1_1MHZ;                    // Set DCO
-  DCOCTL = CALDCO_1MHZ;
-  initI2C();
+//  if (CALBC1_1MHZ==0xFF)					// If calibration constant erased
+//  {
+//    while(1);                               // do not load, trap CPU!!
+//  }
+//  DCOCTL = 0;                               // Select lowest DCOx and MODx settings
+//  BCSCTL1 = CALBC1_1MHZ;                    // Set DCO
+//  DCOCTL = CALDCO_1MHZ;
+
+
+     initClockTo1MHz();
+     initGPIO();
+     initWakeupPin();
+     Set_i2c_Pins();
+
+
+
+
+
+    StopTimer();  // RTC timer disabled
+    deinit_i2c(); // i2c disabled
+    deinit_adc(); // adc disabled
+    initWakeupPin();
+    enable_wakeup(); // only wake-up source is GPIO7
+ //   __bis_SR_register(LPM4_bits + GIE);
   RuleType response;
+ int j = 5;
+ if(j> 6)
+ {
+
+ }
+  initI2C();
   LPM0;
   while(1)
   {
